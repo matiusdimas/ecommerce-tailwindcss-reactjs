@@ -8,15 +8,6 @@ interface AddressFormProps {
     onBack?: () => void
 }
 
-const convertAddressToShippingAddress = (address: Address): any => ({
-    fullName: address.recipientName,
-    phone: address.phone,
-    address: `${address.line1}${address.line2 ? ', ' + address.line2 : ''}`,
-    city: address.city,
-    postalCode: address.postalCode,
-    notes: address.label || `Alamat ${address.type}`,
-    originalAddress: address
-})
 
 const convertFormDataToAddress = (formData: any, type: 'home' | 'work' | 'other' = 'home'): Omit<Address, 'id'> => {
     const addressParts = formData.address.split(', ');
@@ -39,7 +30,7 @@ const convertFormDataToAddress = (formData: any, type: 'home' | 'work' | 'other'
 }
 
 export default function AddressForm({ onNext, onBack }: AddressFormProps) {
-    const { shippingAddress, setShippingAddress } = useCheckout()
+    const { setShippingAddress } = useCheckout()
     const { user, addAddress } = useAuth()
 
     const [selectedAddressId, setSelectedAddressId] = useState<number | "new">("new")

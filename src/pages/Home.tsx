@@ -14,7 +14,7 @@ const Products = sampleProducts.slice(0, 10)
 function Home() {
   const location = useLocation()
   const [selectedCategory, setSelectedCategory] = useState("All")
-  const [searchTerm, setSearchTerm] = useState("")
+  const [searchTerm] = useState("")
   const { addToCart } = useCart()
   const [showSuccessMessage, setShowSuccessMessage] = useState(false)
 

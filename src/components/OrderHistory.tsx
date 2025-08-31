@@ -6,7 +6,7 @@ import type { Order } from "../types/order";
 
 function OrderHistory() {
     const { user } = useAuth();
-    const { orders, getUserOrders, updateOrderStatus, cancelOrder } = useOrders();
+    const { getUserOrders, cancelOrder } = useOrders();
     const [filterStatus, setFilterStatus] = useState<string>("all");
 
     // Get orders for current user
